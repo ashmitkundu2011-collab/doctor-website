@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AuraCare Clinic & Dispensary</title>
   
-  <!-- Tailwind CSS -->
+  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Lucide Icons -->
+  <!-- Lucide Icons CDN -->
   <script src="https://unpkg.com/lucide@latest"></script>
-  <!-- Google Fonts: Plus Jakarta Sans for a friendly, modern, and calming vibe -->
+  <!-- Google Fonts: Plus Jakarta Sans for a modern, stress-free vibe -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -48,7 +48,7 @@
   <style>
     @keyframes pulse-subtle {
       0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.03); opacity: 0.95; }
+      50% { transform: scale(1.025); opacity: 0.95; }
     }
     .pulse-live {
       animation: pulse-subtle 3s infinite ease-in-out;
@@ -65,6 +65,8 @@
         left: 0;
         top: 0;
         width: 100%;
+        margin: 0;
+        padding: 20px;
       }
     }
   </style>
@@ -81,7 +83,7 @@
           <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
           <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-amber-500"></span>
         </span>
-        <span id="bannerText"><strong>Today's Update:</strong> OPD running on normal schedule.</span>
+        <span id="bannerText"><strong>Today's Update:</strong> OPD running on regular schedule without delays.</span>
       </div>
       <button onclick="toggleBanner()" class="text-amber-700 hover:text-amber-950 text-xs font-semibold underline">Dismiss</button>
     </div>
@@ -90,9 +92,9 @@
   <!-- ======================================================== -->
   <!-- NAVIGATION -->
   <!-- ======================================================== -->
-  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-100">
+  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-100 shadow-sm">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
-      <!-- Clinic Logo / Name -->
+      <!-- Clinic Logo -->
       <a href="#home" class="flex items-center gap-3">
         <div class="w-11 h-11 rounded-2xl bg-brand-500 text-white flex items-center justify-center shadow-lg shadow-brand-500/20">
           <i data-lucide="cross" class="w-6 h-6"></i>
@@ -107,17 +109,17 @@
       <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-600">
         <a href="#home" class="hover:text-brand-600 transition">About Doctor</a>
         <a href="#live-queue" class="hover:text-brand-600 transition flex items-center gap-1.5">
-          <span class="h-2 w-2 rounded-full bg-emerald-500"></span> Live Queue
+          <span class="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span> Live Queue
         </a>
         <a href="#timings" class="hover:text-brand-600 transition">Timings</a>
         <a href="#connect" class="hover:text-brand-600 transition">Contact & Socials</a>
-        <a href="#location" class="hover:text-brand-600 transition">Directions</a>
+        <a href="#location" class="hover:text-brand-600 transition">Location</a>
       </nav>
 
       <!-- Action Buttons -->
       <div class="flex items-center gap-3">
-        <!-- Admin Toggle Button -->
-        <button onclick="openAdminModal()" title="Doctor Admin Panel" class="p-2 text-slate-400 hover:text-brand-700 hover:bg-brand-50 rounded-xl transition">
+        <!-- Secure Admin Toggle Button -->
+        <button onclick="openAdminModal()" title="Doctor Admin Panel (PIN Protected)" class="p-2.5 text-slate-400 hover:text-brand-700 hover:bg-brand-50 rounded-xl transition border border-transparent hover:border-brand-200">
           <i data-lucide="shield-check" class="w-5 h-5"></i>
         </button>
 
@@ -130,17 +132,17 @@
   </header>
 
   <!-- ======================================================== -->
-  <!-- HERO / DOCTOR & CLINIC INTRODUCTION -->
+  <!-- HERO & DOCTOR INTRODUCTION -->
   <!-- ======================================================== -->
-  <section id="home" class="py-14 sm:py-20 bg-gradient-to-b from-brand-50/60 to-transparent">
+  <section id="home" class="py-12 sm:py-20 bg-gradient-to-b from-brand-50/60 to-transparent">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         
-        <!-- Left: Introduction Bio -->
+        <!-- Left: Bio & Highlights -->
         <div class="lg:col-span-7 space-y-6">
           <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-100/80 text-brand-800 text-xs font-bold tracking-wide uppercase">
             <i data-lucide="heart-pulse" class="w-4 h-4 text-brand-600"></i>
-            Compassionate & Stress-Free Care
+            Stress-Free Healthcare Environment
           </div>
           
           <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-800 tracking-tight leading-[1.2]">
@@ -148,17 +150,17 @@
           </h1>
 
           <p class="text-base sm:text-lg text-slate-600 leading-relaxed max-w-xl doctor-bio">
-            Welcome to <span class="clinic-name font-semibold text-slate-800">AuraCare Clinic</span>. We believe clinical care should be gentle, transparent, and unhurried. Whether it's a routine consultation, minor procedure, or regular prescription refill, we are here for you and your family.
+            Welcome to <span class="clinic-name font-semibold text-slate-800">AuraCare Clinic</span>. We believe clinical care should be calm, transparent, and unhurried. Check your token from home and arrive right when it's your turn.
           </p>
 
-          <!-- Quick Value Badges -->
+          <!-- Badges -->
           <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-2">
             <div class="bg-white p-3.5 rounded-2xl border border-slate-100 shadow-sm flex items-center gap-3">
               <div class="p-2 bg-emerald-50 text-emerald-600 rounded-xl">
                 <i data-lucide="clock" class="w-5 h-5"></i>
               </div>
               <div>
-                <p class="text-xs text-slate-400 font-medium">Avg. Wait</p>
+                <p class="text-[11px] text-slate-400 font-medium uppercase tracking-wider">Avg. Wait</p>
                 <p class="text-sm font-bold text-slate-800">< 15 mins</p>
               </div>
             </div>
@@ -168,7 +170,7 @@
                 <i data-lucide="award" class="w-5 h-5"></i>
               </div>
               <div>
-                <p class="text-xs text-slate-400 font-medium">Experience</p>
+                <p class="text-[11px] text-slate-400 font-medium uppercase tracking-wider">Experience</p>
                 <p class="text-sm font-bold text-slate-800 doctor-exp">12+ Years</p>
               </div>
             </div>
@@ -178,21 +180,21 @@
                 <i data-lucide="map-pin" class="w-5 h-5"></i>
               </div>
               <div>
-                <p class="text-xs text-slate-400 font-medium">Location</p>
+                <p class="text-[11px] text-slate-400 font-medium uppercase tracking-wider">Location</p>
                 <p class="text-sm font-bold text-slate-800 truncate doctor-area">Civil Lines, Central</p>
               </div>
             </div>
           </div>
 
-          <!-- Quick Action Buttons -->
+          <!-- Action Buttons -->
           <div class="flex flex-wrap gap-4 pt-3">
             <a href="#live-queue" class="bg-brand-600 hover:bg-brand-700 text-white font-semibold px-6 py-3.5 rounded-xl shadow-lg shadow-brand-600/25 transition inline-flex items-center gap-2">
               <i data-lucide="sparkles" class="w-5 h-5"></i>
               <span>Check Live Token Status</span>
             </a>
-            <a href="#connect" class="bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 font-semibold px-6 py-3.5 rounded-xl transition inline-flex items-center gap-2 shadow-sm">
+            <a href="#connect" class="contact-wa bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 font-semibold px-6 py-3.5 rounded-xl transition inline-flex items-center gap-2 shadow-sm">
               <i data-lucide="message-circle" class="w-5 h-5 text-emerald-600"></i>
-              <span>WhatsApp Doctor</span>
+              <span>WhatsApp Clinic</span>
             </a>
           </div>
         </div>
@@ -203,7 +205,6 @@
             <div class="absolute -top-12 -right-12 w-40 h-40 bg-brand-100 rounded-full blur-2xl opacity-60"></div>
             
             <div class="relative flex flex-col items-center text-center space-y-4">
-              <!-- Doctor Avatar / Photo -->
               <div class="relative">
                 <div class="w-32 h-32 rounded-2xl bg-gradient-to-tr from-brand-500 to-teal-400 p-1 shadow-lg">
                   <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=600&auto=format&fit=crop" 
@@ -240,7 +241,7 @@
   </section>
 
   <!-- ======================================================== -->
-  <!-- LIVE TOKEN TRACKER & APPOINTMENT QUEUE (CORE FEATURE) -->
+  <!-- LIVE TOKEN TRACKER & APPOINTMENT QUEUE -->
   <!-- ======================================================== -->
   <section id="live-queue" class="py-16 bg-white border-y border-slate-100">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
@@ -248,7 +249,7 @@
       <div class="text-center max-w-2xl mx-auto mb-12">
         <span class="px-3.5 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold uppercase tracking-wider">Live OPD Room</span>
         <h2 class="text-3xl font-extrabold text-slate-800 mt-2">Real-Time Token Tracker</h2>
-        <p class="text-sm text-slate-500 mt-2">Check your place in line before leaving home to avoid waiting in crowded rooms.</p>
+        <p class="text-sm text-slate-500 mt-2">Check your queue position from anywhere so you don't spend hours sitting in waiting areas.</p>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
@@ -256,23 +257,22 @@
         <!-- Left: Live Serving Display -->
         <div class="lg:col-span-6 space-y-6">
           <div class="bg-gradient-to-br from-brand-600 via-brand-700 to-teal-800 text-white rounded-3xl p-8 shadow-xl relative overflow-hidden">
-            <!-- Background Glow -->
             <div class="absolute -right-8 -bottom-8 w-48 h-48 bg-white/10 rounded-full blur-2xl"></div>
 
             <div class="flex justify-between items-center mb-6">
               <span class="inline-flex items-center gap-2 px-3 py-1 bg-white/15 backdrop-blur-md rounded-full text-xs font-medium tracking-wide">
-                <span class="w-2 h-2 rounded-full bg-emerald-300 animate-pulse"></span>
+                <span class="w-2 h-2 rounded-full bg-emerald-300 animate-ping"></span>
                 CURRENT STATUS: <span id="opdStateBadge" class="font-bold">IN SESSION</span>
               </span>
-              <button onclick="refreshQueue()" class="text-white/80 hover:text-white p-1.5 rounded-lg hover:bg-white/10 transition" title="Refresh">
+              <button onclick="refreshQueue()" class="text-white/80 hover:text-white p-2 rounded-xl hover:bg-white/10 transition" title="Refresh">
                 <i data-lucide="refresh-cw" class="w-4 h-4"></i>
               </button>
             </div>
 
             <div class="text-center py-6">
-              <p class="text-sm font-semibold tracking-wider text-brand-100 uppercase">Now Serving Token</p>
+              <p class="text-xs font-bold tracking-widest text-brand-100 uppercase">Now Serving Token</p>
               <div class="text-7xl sm:text-8xl font-black tracking-tight my-2 pulse-live text-white font-mono" id="nowServingToken">
-                14
+                1
               </div>
               <p class="text-sm text-brand-100 flex items-center justify-center gap-1.5">
                 <i data-lucide="user-check" class="w-4 h-4"></i> Patient inside consultation room
@@ -282,7 +282,7 @@
             <div class="grid grid-cols-2 gap-3 pt-4 border-t border-white/15 text-center">
               <div class="bg-black/10 rounded-2xl p-3">
                 <p class="text-xs text-brand-200">Next in Line</p>
-                <p class="text-xl font-bold font-mono" id="nextTokens">#15, #16, #17</p>
+                <p class="text-xl font-bold font-mono" id="nextTokens">#2, #3, #4</p>
               </div>
               <div class="bg-black/10 rounded-2xl p-3">
                 <p class="text-xs text-brand-200">Est. Wait / Token</p>
@@ -291,13 +291,12 @@
             </div>
           </div>
 
-          <!-- Token Alert Sound / Notification Notice -->
           <div class="bg-calm-surface border border-slate-200/80 rounded-2xl p-4 flex items-center justify-between text-xs text-slate-600">
             <div class="flex items-center gap-3">
               <div class="p-2 rounded-xl bg-brand-50 text-brand-600">
-                <i data-lucide="volume-2" class="w-4 h-4"></i>
+                <i data-lucide="bell-ring" class="w-4 h-4"></i>
               </div>
-              <span>Keep this page open. The screen will automatically refresh token numbers.</span>
+              <span>Keep this page open on your phone. Numbers update seamlessly in real time.</span>
             </div>
           </div>
         </div>
@@ -311,7 +310,7 @@
               </div>
               <div>
                 <h3 class="text-lg font-bold text-slate-800">Get Your Digital Token</h3>
-                <p class="text-xs text-slate-500">Fast OPD slip generator for today's session</p>
+                <p class="text-xs text-slate-500">Fast OPD registration for today's session</p>
               </div>
             </div>
 
@@ -356,7 +355,7 @@
   </section>
 
   <!-- ======================================================== -->
-  <!-- TIMINGS & REAL-TIME SCHEDULE -->
+  <!-- TIMINGS & CONSULTATION HOURS -->
   <!-- ======================================================== -->
   <section id="timings" class="py-16 bg-calm-bg">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
@@ -364,7 +363,7 @@
       <div class="text-center max-w-2xl mx-auto mb-12">
         <span class="px-3.5 py-1 rounded-full bg-brand-100 text-brand-800 text-xs font-bold uppercase tracking-wider">Visiting Hours</span>
         <h2 class="text-3xl font-extrabold text-slate-800 mt-2">Consultation Schedule</h2>
-        <p class="text-sm text-slate-500 mt-2">Regular timings & live notification of any unexpected schedule delays.</p>
+        <p class="text-sm text-slate-500 mt-2">Regular timings & live notice of any unexpected schedule delays.</p>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -391,7 +390,7 @@
           <h3 class="text-xl font-bold text-slate-800" id="timingEvening">05:30 PM – 09:00 PM</h3>
           <p class="text-xs text-slate-500 mt-1">Monday through Saturday</p>
           <div class="mt-4 pt-4 border-t border-slate-100 text-xs text-slate-600 flex items-center gap-2">
-            <i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> Dispensary counter open till 9:30 PM
+            <i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> In-house dispensary open till 9:30 PM
           </div>
         </div>
 
@@ -410,7 +409,7 @@
 
       </div>
 
-      <!-- Schedule Change Notice Alert Box -->
+      <!-- Emergency Hotline Card -->
       <div class="mt-8 bg-brand-50 border border-brand-200 rounded-2xl p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div class="flex items-center gap-3">
           <div class="p-2.5 bg-brand-600 text-white rounded-xl">
@@ -418,7 +417,7 @@
           </div>
           <div>
             <h4 class="text-sm font-bold text-brand-900">Need emergency consultations outside regular hours?</h4>
-            <p class="text-xs text-brand-700">The doctor is available for verified emergencies upon prior telephone confirmation.</p>
+            <p class="text-xs text-brand-700">The doctor is accessible for verified medical urgencies by telephone.</p>
           </div>
         </div>
         <a href="tel:+919876543210" class="doctor-tel-link whitespace-nowrap bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold px-5 py-2.5 rounded-xl shadow transition flex items-center gap-1.5">
@@ -438,14 +437,14 @@
       
       <div class="text-center max-w-2xl mx-auto mb-12">
         <span class="px-3.5 py-1 rounded-full bg-teal-50 text-teal-700 text-xs font-bold uppercase tracking-wider">Direct Access</span>
-        <h2 class="text-3xl font-extrabold text-slate-800 mt-2">Connect Directly with the Clinic</h2>
-        <p class="text-sm text-slate-500 mt-2">Tap any card below to launch the respective application directly on your phone or computer.</p>
+        <h2 class="text-3xl font-extrabold text-slate-800 mt-2">Connect with the Doctor & Clinic</h2>
+        <p class="text-sm text-slate-500 mt-2">Tap any option below to launch the respective application directly on your phone or device.</p>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
         
         <!-- WhatsApp -->
-        <a href="https://wa.me/919876543210?text=Hello%20Doctor,%20I%20have%20an%20inquiry%20regarding%20consultation" 
+        <a href="https://wa.me/919876543210" 
            target="_blank" 
            class="contact-wa group p-6 rounded-3xl bg-emerald-50/60 hover:bg-emerald-50 border border-emerald-100 transition shadow-sm hover:shadow-md flex flex-col justify-between">
           <div>
@@ -479,7 +478,7 @@
         </a>
 
         <!-- Email -->
-        <a href="mailto:doctor@auracareclinic.com?subject=Consultation%20Query" 
+        <a href="mailto:doctor@auracareclinic.com" 
            class="contact-email group p-6 rounded-3xl bg-indigo-50/60 hover:bg-indigo-50 border border-indigo-100 transition shadow-sm hover:shadow-md flex flex-col justify-between">
           <div>
             <div class="w-12 h-12 rounded-2xl bg-indigo-600 text-white flex items-center justify-center shadow-lg shadow-indigo-600/20 mb-4 group-hover:scale-105 transition">
@@ -495,7 +494,7 @@
           </div>
         </a>
 
-        <!-- Instagram / Social -->
+        <!-- Instagram -->
         <a href="https://instagram.com" 
            target="_blank" 
            class="contact-insta group p-6 rounded-3xl bg-rose-50/60 hover:bg-rose-50 border border-rose-100 transition shadow-sm hover:shadow-md flex flex-col justify-between">
@@ -518,7 +517,7 @@
   </section>
 
   <!-- ======================================================== -->
-  <!-- CLINIC LOCATION & DISPENSARY DETAILS -->
+  <!-- CLINIC LOCATION & PREMISES -->
   <!-- ======================================================== -->
   <section id="location" class="py-16 bg-calm-bg">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
@@ -529,7 +528,7 @@
             <div>
               <span class="px-3.5 py-1 rounded-full bg-brand-100 text-brand-800 text-xs font-bold uppercase tracking-wider">Dispensary Premises</span>
               <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-800 mt-2">Visit Our Clinic</h2>
-              <p class="text-sm text-slate-500 mt-2">We have in-house standard medicines, basic diagnostic tests, and sterile wound-care equipment.</p>
+              <p class="text-sm text-slate-500 mt-2">In-house pharmacy, routine lab sample collections, and clean treatment rooms.</p>
 
               <div class="mt-6 space-y-4 text-sm text-slate-600">
                 <div class="flex items-start gap-3">
@@ -548,19 +547,19 @@
                   </div>
                   <div>
                     <strong class="text-slate-800 block">Parking & Accessibility:</strong>
-                    <span>Dedicated two-wheeler and four-wheeler parking available with wheelchair ramp access.</span>
+                    <span>Wheelchair accessible entrance with dedicated customer parking space.</span>
                   </div>
                 </div>
               </div>
             </div>
 
-            <a href="https://maps.google.com/?q=Civil+Lines+Clinic" target="_blank" class="w-full bg-slate-900 hover:bg-slate-800 text-white text-sm font-semibold py-3 rounded-xl transition flex items-center justify-center gap-2 shadow-md">
+            <a href="https://maps.google.com" target="_blank" class="w-full bg-slate-900 hover:bg-slate-800 text-white text-sm font-semibold py-3 rounded-xl transition flex items-center justify-center gap-2 shadow-md">
               <i data-lucide="navigation" class="w-4 h-4 text-brand-300"></i>
               <span>Open in Google Maps App</span>
             </a>
           </div>
 
-          <!-- Map Embed / Mock -->
+          <!-- Map Embed Container -->
           <div class="lg:col-span-7 bg-slate-100 min-h-[320px] relative border-t lg:border-t-0 lg:border-l border-slate-200">
             <iframe 
               title="Dispensary Location Map"
@@ -583,21 +582,20 @@
       <div class="flex items-center gap-2">
         <div class="w-6 h-6 rounded-lg bg-brand-500 text-white flex items-center justify-center font-bold text-xs">A</div>
         <span class="font-semibold text-slate-700 clinic-name">AuraCare Clinic</span>
-        <span>• Dedicated to Stress-Free Healing</span>
+        <span>• Gentle & Calm Healthcare</span>
       </div>
       <div>
-        <span>© <span id="currentYear"></span> All rights reserved. Easily customizable for clinical practitioners.</span>
+        <span>© <span id="currentYear"></span> All rights reserved.</span>
       </div>
     </div>
   </footer>
 
   <!-- ======================================================== -->
-  <!-- POPUP MODAL: DIGITAL TOKEN SLIP -->
+  <!-- MODAL 1: DIGITAL TOKEN SLIP -->
   <!-- ======================================================== -->
   <div id="tokenSlipModal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
-    <div class="bg-white rounded-3xl max-w-sm w-full p-6 shadow-2xl relative overflow-hidden animate-in fade-in zoom-in duration-200">
+    <div class="bg-white rounded-3xl max-w-sm w-full p-6 shadow-2xl relative overflow-hidden">
       
-      <!-- Close button -->
       <button onclick="closeTokenModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700">
         <i data-lucide="x" class="w-5 h-5"></i>
       </button>
@@ -620,8 +618,8 @@
         </div>
 
         <div class="text-left bg-calm-bg p-3.5 rounded-xl space-y-1 text-xs text-slate-600">
-          <p class="flex justify-between"><span>Current Serving:</span> <strong id="slipServing" class="text-slate-800 font-mono">#14</strong></p>
-          <p class="flex justify-between"><span>Estimated Consultation:</span> <strong id="slipEstTime" class="text-emerald-600">~20 mins</strong></p>
+          <p class="flex justify-between"><span>Current Serving:</span> <strong id="slipServing" class="text-slate-800 font-mono">#1</strong></p>
+          <p class="flex justify-between"><span>Estimated Consultation:</span> <strong id="slipEstTime" class="text-emerald-600">~15 mins</strong></p>
         </div>
 
         <p class="text-[11px] text-slate-400">Please arrive at the clinic 5 minutes before your estimated time.</p>
@@ -640,8 +638,7 @@
   </div>
 
   <!-- ======================================================== -->
-  <!-- ======================================================== -->
-  <!-- POPUP MODAL 1: ADMIN PIN VERIFICATION SCREEN -->
+  <!-- MODAL 2: SECURE DOCTOR PIN AUTHENTICATION -->
   <!-- ======================================================== -->
   <div id="adminAuthModal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
     <div class="bg-white rounded-3xl max-w-sm w-full p-6 sm:p-8 shadow-2xl relative text-center">
@@ -654,7 +651,7 @@
       </div>
 
       <h3 class="text-lg font-bold text-slate-800">Doctor & Staff Access</h3>
-      <p class="text-xs text-slate-500 mt-1">Enter your clinic security PIN to manage tokens and settings.</p>
+      <p class="text-xs text-slate-500 mt-1">Enter your clinic security PIN to manage queue and settings.</p>
 
       <form onsubmit="handlePinSubmit(event)" class="mt-6 space-y-4">
         <div>
@@ -679,7 +676,7 @@
   </div>
 
   <!-- ======================================================== -->
-  <!-- POPUP MODAL 2: SECURED DOCTOR ADMIN PANEL -->
+  <!-- MODAL 3: PROTECTED DOCTOR MANAGEMENT DASHBOARD -->
   <!-- ======================================================== -->
   <div id="adminModal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
     <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto">
@@ -690,7 +687,6 @@
           <span>Doctor Management Panel</span>
         </div>
         <div class="flex items-center gap-2">
-          <!-- Lock / Sign Out Button -->
           <button onclick="lockAdminPanel()" title="Lock Panel" class="text-xs text-slate-500 hover:text-rose-600 flex items-center gap-1 font-semibold px-2.5 py-1 bg-slate-100 hover:bg-rose-50 rounded-lg transition">
             <i data-lucide="log-out" class="w-3.5 h-3.5"></i> Lock
           </button>
@@ -706,7 +702,7 @@
         <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-3">
           <div class="flex items-center justify-between">
             <label class="font-bold text-slate-700 text-sm">Live Token Control</label>
-            <span class="text-[11px] text-slate-400 font-mono">OPD Live Room</span>
+            <span class="text-[11px] text-slate-400 font-mono">OPD Queue</span>
           </div>
           <div class="flex items-center gap-2 sm:gap-3">
             <button type="button" onclick="decrementToken()" class="px-3 py-2 bg-white border border-slate-200 rounded-xl text-sm font-bold hover:bg-slate-100 shadow-sm">-1</button>
@@ -756,7 +752,7 @@
         <!-- Security / Change PIN Section -->
         <div class="border-t border-slate-100 pt-4">
           <details class="group">
-            <summary class="flex items-center justify-between cursor-pointer font-bold text-slate-700 text-xs">
+            <summary class="flex items-center justify-between cursor-pointer font-bold text-slate-700 text-xs select-none">
               <span class="flex items-center gap-1.5"><i data-lucide="key" class="w-3.5 h-3.5 text-brand-600"></i> Change Security PIN</span>
               <span class="text-slate-400 group-open:rotate-180 transition">▼</span>
             </summary>
@@ -778,14 +774,12 @@
 
     </div>
   </div>
-  
+
   <!-- ======================================================== -->
-  <!-- JAVASCRIPT: LOGIC, STATE & EASY CONFIGURATION -->
+  <!-- APPLICATION JAVASCRIPT & STATE MANAGEMENT -->
   <!-- ======================================================== -->
   <script>
-    // -----------------------------------------------------------------
-    // DOCTOR & CLINIC DEFAULT CONFIGURATION (Can easily be customized)
-    // -----------------------------------------------------------------
+    // 1. DEFAULT CLINICAL CONFIGURATION
     const DEFAULT_CONFIG = {
       clinicName: "AuraCare Clinic & Dispensary",
       doctorName: "Dr. Arvind Sharma",
@@ -804,11 +798,15 @@
       timingEvening: "05:30 PM – 09:00 PM",
       timingSunday: "10:00 AM – 01:00 PM",
       bannerNotice: "OPD running on regular schedule without delays.",
-      nowServing: 14,
-      lastGeneratedToken: 18
+      nowServing: 1,
+      lastGeneratedToken: 4
     };
 
-    // Load from local storage or set defaults
+    // Default SHA-256 Hash for PIN "1234"
+    const DEFAULT_PIN_HASH = "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4";
+    let isDoctorAuthenticated = false;
+
+    // Load active state from localStorage or use defaults
     let state = JSON.parse(localStorage.getItem('auracare_state')) || DEFAULT_CONFIG;
 
     function saveState() {
@@ -816,11 +814,17 @@
       renderApp();
     }
 
-    // -----------------------------------------------------------------
-    // RENDER STATE TO UI
-    // -----------------------------------------------------------------
+    // 2. CRYPTOGRAPHIC HASH HELPER (SHA-256)
+    async function hashPin(pin) {
+      const msgUint8 = new TextEncoder().encode(pin);
+      const hashBuffer = await crypto.subtle.digest('SHA-256', msgUint8);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    // 3. RENDER ALL STATE VARIABLES TO DOM
     function renderApp() {
-      // Names & Clinic Info
+      // Clinic and Doctor texts
       document.querySelectorAll('.clinic-name').forEach(el => el.textContent = state.clinicName);
       document.querySelectorAll('.doctor-name').forEach(el => el.textContent = state.doctorName);
       document.querySelectorAll('.doctor-degrees').forEach(el => el.textContent = state.degrees);
@@ -842,28 +846,26 @@
       // Notice Banner
       document.getElementById('bannerText').innerHTML = `<strong>Today's Update:</strong> ${state.bannerNotice}`;
 
-      // Live Tokens
+      // Live Queue Data
       document.getElementById('nowServingToken').textContent = state.nowServing;
       const next1 = state.nowServing + 1;
       const next2 = state.nowServing + 2;
       const next3 = state.nowServing + 3;
       document.getElementById('nextTokens').textContent = `#${next1}, #${next2}, #${next3}`;
 
-      // App Links update
+      // App Links & Deep-link bindings
       document.querySelectorAll('.contact-tel').forEach(el => el.href = `tel:${state.rawPhone}`);
       document.querySelectorAll('.doctor-tel-link').forEach(el => el.href = `tel:${state.rawPhone}`);
       document.querySelectorAll('.contact-wa').forEach(el => {
         el.href = `https://wa.me/${state.rawPhone}?text=Hello%20${encodeURIComponent(state.doctorName)},%20I%20have%20an%20inquiry%20regarding%20consultation`;
       });
-      document.querySelectorAll('.contact-email').forEach(el => el.href = `mailto:${state.email}?subject=Medical%20Inquiry`);
+      document.querySelectorAll('.contact-email').forEach(el => el.href = `mailto:${state.email}?subject=Medical%20Consultation%20Inquiry`);
       document.querySelectorAll('.contact-insta').forEach(el => el.href = `https://instagram.com/${state.instagram.replace('@','')}`);
 
       document.getElementById('currentYear').textContent = new Date().getFullYear();
     }
 
-    // -----------------------------------------------------------------
-    // TOKEN BOOKING & GENERATION
-    // -----------------------------------------------------------------
+    // 4. PATIENT TOKEN GENERATION
     function generateToken(e) {
       e.preventDefault();
       const name = document.getElementById('patientName').value.trim();
@@ -873,7 +875,7 @@
       const assignedToken = state.lastGeneratedToken;
       saveState();
 
-      // Populate Modal Slip
+      // Populate Digital Slip
       document.getElementById('slipTokenNo').textContent = `#${assignedToken}`;
       document.getElementById('slipPatientName').textContent = name;
       document.getElementById('slipTime').textContent = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) + ", Today";
@@ -881,9 +883,8 @@
       
       const tokensAway = Math.max(0, assignedToken - state.nowServing);
       const estMinutes = tokensAway * 8;
-      document.getElementById('slipEstTime').textContent = estMinutes === 0 ? "You're up next!" : `~${estMinutes} mins (${tokensAway} patients ahead)`;
+      document.getElementById('slipEstTime').textContent = estMinutes === 0 ? "You are next in line!" : `~${estMinutes} mins (${tokensAway} ahead of you)`;
 
-      // Open Modal
       document.getElementById('tokenSlipModal').classList.remove('hidden');
       document.getElementById('tokenForm').reset();
     }
@@ -896,17 +897,47 @@
       renderApp();
       const badge = document.getElementById('opdStateBadge');
       badge.textContent = "SYNCED";
-      setTimeout(() => badge.textContent = "IN SESSION", 1500);
+      setTimeout(() => badge.textContent = "IN SESSION", 1200);
     }
 
     function toggleBanner() {
       document.getElementById('statusBanner').classList.add('hidden');
     }
 
-    // -----------------------------------------------------------------
-    // DOCTOR ADMIN MODAL LOGIC
-    // -----------------------------------------------------------------
+    // 5. SECURED DOCTOR ADMIN AUTHENTICATION
     function openAdminModal() {
+      if (isDoctorAuthenticated) {
+        populateAndOpenAdminPanel();
+      } else {
+        document.getElementById('pinErrorMsg').classList.add('hidden');
+        document.getElementById('adminPinInput').value = '';
+        document.getElementById('adminAuthModal').classList.remove('hidden');
+        setTimeout(() => document.getElementById('adminPinInput').focus(), 150);
+      }
+    }
+
+    function closeAdminAuthModal() {
+      document.getElementById('adminAuthModal').classList.add('hidden');
+    }
+
+    async function handlePinSubmit(e) {
+      e.preventDefault();
+      const enteredPin = document.getElementById('adminPinInput').value.trim();
+      const enteredHash = await hashPin(enteredPin);
+      const savedHash = localStorage.getItem('auracare_admin_pin') || DEFAULT_PIN_HASH;
+
+      if (enteredHash === savedHash) {
+        isDoctorAuthenticated = true;
+        closeAdminAuthModal();
+        populateAndOpenAdminPanel();
+      } else {
+        const errorEl = document.getElementById('pinErrorMsg');
+        errorEl.classList.remove('hidden');
+        document.getElementById('adminPinInput').value = '';
+      }
+    }
+
+    function populateAndOpenAdminPanel() {
       document.getElementById('adminServingInput').value = state.nowServing;
       document.getElementById('adminBannerInput').value = state.bannerNotice;
       document.getElementById('adminDoctorName').value = state.doctorName;
@@ -915,12 +946,20 @@
       document.getElementById('adminFee').value = state.consultationFee;
       document.getElementById('adminAddress').value = state.address;
       document.getElementById('adminModal').classList.remove('hidden');
+      lucide.createIcons();
     }
 
     function closeAdminModal() {
       document.getElementById('adminModal').classList.add('hidden');
     }
 
+    function lockAdminPanel() {
+      isDoctorAuthenticated = false;
+      closeAdminModal();
+      alert("Doctor panel locked.");
+    }
+
+    // 6. TOKEN ACTIONS (INCREMENT, DECREMENT, RESET)
     function incrementToken() {
       state.nowServing += 1;
       document.getElementById('adminServingInput').value = state.nowServing;
@@ -944,6 +983,7 @@
       }
     }
 
+    // 7. SAVE SETTINGS & UPDATE PIN
     function saveAdminSettings(e) {
       e.preventDefault();
       state.nowServing = parseInt(document.getElementById('adminServingInput').value) || 1;
@@ -957,10 +997,22 @@
 
       saveState();
       closeAdminModal();
-      alert("Clinic preferences updated successfully!");
+      alert("Dispensary updates saved successfully!");
     }
 
-    // Initialize Lucide icons and initial paint
+    async function updatePin() {
+      const newPin = document.getElementById('newPinInput').value.trim();
+      if (newPin.length < 4) {
+        alert("Please enter a PIN with at least 4 digits.");
+        return;
+      }
+      const newHash = await hashPin(newPin);
+      localStorage.setItem('auracare_admin_pin', newHash);
+      document.getElementById('newPinInput').value = '';
+      alert("Security PIN successfully changed!");
+    }
+
+    // 8. INITIALIZE APPLICATION
     document.addEventListener('DOMContentLoaded', () => {
       renderApp();
       lucide.createIcons();
